@@ -20,7 +20,9 @@ from app import views as v
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('index/',v.index,name='index'),
+    path('inicio/',v.inicio),
+    path('registro/',v.registro),
+    path('catalogo/',v.catalogo),
+
     
-
-
 ]
