@@ -4,7 +4,7 @@ from app import models
 from app import formularios
 
 # Create your views here.
-def index(request):
+def login(request):
     form = formularios.IniciarSesion()
     if request.method == 'POST':
         form = formularios.IniciarSesion(request.POST)
@@ -16,15 +16,14 @@ def index(request):
             datos = {'usuario':usuario}
             return render(request,'inicio.html',datos)
 
-    
-        
     datos = {'form':form}
-    return render(request,'index.html',datos)
+    return render(request,'login.html',datos)
 
 def inicio(request):
     return render(request, 'inicio.html')
 
-def crearUsuario(formulario):
+def crearUsuario(request,formulario):
+    form = formularios.IniciarSesion()
     usuario = models.Usuario()
     usuario.nombre = formulario.cleaned_data['nombre']
     usuario.apellido = formulario.cleaned_data['apellido']
@@ -34,28 +33,26 @@ def crearUsuario(formulario):
     usuario.password = formulario.cleaned_data['password']
     usuario.terminos = formulario.cleaned_data['terminos']
     usuario.save()
+    datos = {'form':form}
+    return render(request,'login.html',datos)
 
 def registro(request):
     form = formularios.userRegistrationForm()
-    data = {'form':form}
-    return render(request, 'registro.html',data)
-
-
-def validar(request):
-    form = formularios.userRegistrationForm()
+    formlogin = formularios.IniciarSesion()
     if request.method == 'POST':
         form = formularios.userRegistrationForm(request.POST)
         if form.is_valid():
             if models.Usuario.objects.filter(email__icontains=form.cleaned_data['email']).__len__() == 0:
-                crearUsuario(form)
-                return render(request, 'inicio.html')
+                crearUsuario(request,form)
+                return render(request,'login.html',{'form':formlogin})
             else:
                 print("Correo ingresado ya se encuentra registrado")
                 data = {'form':form}
                 return render(request, 'registro.html',data)
+    data = {'form':form}
+    return render(request, 'registro.html',data)
+
             
-
-
 
 def catalogo(request):
     return render(request, 'catalogo.html')
