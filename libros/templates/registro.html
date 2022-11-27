@@ -8,30 +8,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
+<body class="container" style="display: flex; flex-direction: column;">
   <div class="alert alert-info display-1 text-center">
-    REGISTRO
+      <h1>Regístrate</h1>
+      <h6>Ingresa tus datos personales y disfruta de una experiencia de compra más rápida.</h6>
   </div>
 
-  <div style="display: flex; justify-content: center;">
-    <form>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Usuario</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+  <div style="display: flex; justify-content: center;"> 
+    <div class="container mt-3">
+        <div class="row d-flex justify-content-start">
+            <div class="col-md-7">
+                <div class="card">
+                    <div class="card-body">
+                        <form method = "post" action="/validar/">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button type="submit" class="btn btn-success">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-          <input type="password" class="form-control" id="exampleInputPassword1">
+    </div>
+    <div>
+      <div style="display: flex; flex-direction: column; justify-content: center;border-bottom: 3.3px solid red;padding-bottom: 33px;">
+        <h5 style="display: flex; justify-content:flex-start;">Beneficios libros.com</h5>
+
+        <div style="display: flex; margin-top: 33px; justify-content: flex-start;">
+          <img src="/static/logos_SVG/notifications_active_black_24dp.svg" alt="logo" style="margin-right: 13px;">
+          <p>Recibir notificaciones en tiempo real de tus pedidos.</p>
         </div>
-        <div class="mb-3 form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        <div style="display: flex; justify-content: start;">
+          <img src="/static/logos_SVG/description_black_24dp.svg" alt="logo" style="margin-right: 13px;">
+          <p>Revisar tus boletas online.</p>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-    
-  </div>
-    
+        <div style="display: flex; justify-content: flex-start;">
+          <img src="/static/logos_SVG/star_black_24dp.svg" alt="logo" style="margin-right: 13px;">
+          <p>Guardar medios de pago y direcciones favoritas.</p>
+        </div>
+        <div style="display: flex; justify-content: flex-start;">
+          <img src="/static/logos_SVG/business_black_24dp.svg" alt="logo" style="margin-right: 13px;">
+          <p>Ser parte de PuntoBooks, el mejor programa de beneficios.</p>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; justify-content: center;border-bottom: 3.3px solid red; margin-top:33px;padding-bottom: 33px;">
+        <h5 style="display: flex; justify-content:flex-start;">Beneficios PuntoBooks</h5>
+        <div style="display: flex; margin-top: 33px; justify-content: flex-start;">
+          <img src="/static/logos_SVG/local_shipping_black_24dp.svg" alt="logo" style="margin-right: 13px;">
+          <p>Envíos gratis en compras desde $29.990.</p>
+        </div>
+        <div style="display: flex; justify-content: start;">
+          <img src="/static/logos_SVG/card_giftcard_black_24dp.svg" alt="logo" style="margin-right: 13px;">
+          <p>Canje de productos, experiencias, viajes y Gift Cards.</p>
+        </div>
+        <div style="display: flex; justify-content: flex-start;">
+          <img src="/static/logos_SVG/rocket_launch_black_24dp.svg" alt="logo" style="margin-right: 13px;">
+          <p>Promociones especiales, cupones de descuento y más.</p>
+        </div>
+      </div>
+        
+    </div>
+  </div>    
 </body>
 </html>

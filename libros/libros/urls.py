@@ -22,6 +22,7 @@ urlpatterns = [
     path('index/',v.index,name='index'),
     path('inicio/',v.inicio,name='inicio'),
     path('registro/',v.registro,name='registro'),
+    path('validar/',v.validar,name='validar'),
     path('catalogo/',v.catalogo,name='catalogo'),
 
     
