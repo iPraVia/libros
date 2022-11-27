@@ -25,7 +25,7 @@ urlpatterns = [
     path('',v.catalogo,name='catalogo'),
     path('agregar/<int:libro_id>/', v.agregarLibro, name="agregarLibro"),
     path('limpiar/', v.limpiarCarrito, name="CLS"),
-
+    path('restar/<int:producto_id>/', v.restarLibro, name="restar"),
 
     
 ]

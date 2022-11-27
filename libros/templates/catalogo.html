@@ -7,13 +7,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="{% static 'css/estilos.css' %}" rel="stylesheet">
+    <link rel="stylesheet" src="../static/css/estilos.css">
+
 
     <title>Libreria</title>
 </head>
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-12 align-self-center"><h1 class="display-1">CATÁLOGO</h1></div>
+            <div class="alert alert-secondary display-1 text-center">
+                Catálogo
+              </div>
+            <h3 style="margin-top:50px ;">Libros disponibles</h3>
         </div>
         <div class="row">
             <div class="col-8">
@@ -24,10 +29,9 @@
                             <div class="col-6">
                                 <div class="card" style="height: 10rem; width: 23rem; margin: 5px 0px;">
                                     <div class="card-body">
-										<img class="thumbnail" src="{{libro.imageURL}}">
                                         <h5 class="card-title">{{libro.nombre}}</h5>
                                         <p class="card-text">{{libro.precio}}</p>
-                                        <a href="{% url 'agregarLibro' libro.id %}" class="btn btn-primary">Agregar al carrito</a>
+                                        <a href="{% url 'agregarLibro' libro.id %}" class="btn btn-primary" >Agregar al carrito</a>
                                     </div>
                                 </div>
                             </div>
