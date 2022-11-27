@@ -1,13 +1,46 @@
 <!DOCTYPE html>
+{% include 'header.html' %}
 {% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+	<link href="{% static 'css/estilos.css' %}" rel="stylesheet">
+
+    <title>Libreria</title>
 </head>
 <body>
-    <h1>Catalogo</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 align-self-center"><h1 class="display-1">CATÁLOGO</h1></div>
+        </div>
+        <div class="row">
+            <div class="col-8">
+                <div class="row" style="padding: 10px 0;">
+                    <div class="col-12">
+                        <div class="row">
+                            {% for libro in libros %}
+                            <div class="col-6">
+                                <div class="card" style="height: 10rem; width: 23rem; margin: 5px 0px;">
+                                    <div class="card-body">
+										<img class="thumbnail" src="{{libro.imageURL}}">
+                                        <h5 class="card-title">{{libro.nombre}}</h5>
+                                        <p class="card-text">{{libro.precio}}</p>
+                                        <a href="{% url 'agregarLibro' libro.id %}" class="btn btn-primary">Agregar al carrito</a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                {% include "carrito.html" %}
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>

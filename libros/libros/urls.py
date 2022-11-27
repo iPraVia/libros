@@ -20,9 +20,10 @@ from app import views as v
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',v.login,name='login'),
-    path('inicio/',v.inicio,name='inicio'),
     path('registro/',v.registro,name='registro'),
-    path('catalogo/',v.catalogo,name='catalogo'),
+    path('',v.catalogo,name='catalogo'),
+    path('agregar/<int:libro_id>/', v.agregarLibro, name="agregarLibro"),
+
 
     
 ]
