@@ -22,7 +22,9 @@ urlpatterns = [
     path('index/',v.index,name='index'),
     path('inicio/',v.inicio,name='inicio'),
     path('registro/',v.registro,name='registro'),
-    path('catalogo/',v.catalogo,name='catalogo'),
+    path('',v.catalogo,name='catalogo'),
+    path('agregar/<int:libro_id>/', v.agregarLibro, name="agregarLibro"),
+
 
     
 ]
