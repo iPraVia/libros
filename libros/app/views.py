@@ -28,8 +28,11 @@ def limpiarCarrito(request):
     carrito.limpiar()
     return redirect("catalogo")
 
-def restarLibro(request, producto_id):
+def restarLibro(request, libro_id):
     carrito = Carrito(request)
-    producto = Libro.objects.get(id=producto_id)
-    carrito.restar(producto)
+    libro = Libro.objects.get(id=libro_id)
+    carrito.restar(libro)
     return redirect("catalogo")
+
+def carrito(request):
+    return render(request, 'carrito.html')
