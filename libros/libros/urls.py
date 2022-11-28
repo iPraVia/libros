@@ -21,10 +21,12 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',v.login,name='login'),
     path('registro/',v.registro,name='registro'),
-    path('',v.catalogo,name='catalogo'),
+    path('catalogo/',v.catalogo,name='catalogo'),
     path('agregar/<int:libro_id>/', v.agregarLibro, name="agregarLibro"),
     path('limpiar/', v.limpiarCarrito, name="CLS"),
-    path('restar/<int:producto_id>/', v.restarLibro, name="restar"),
+    path('restar/<int:libro_id>/', v.restarLibro, name="restar"),
+    path('carrito/',v.carrito,name='carrito'),
+
 
     
 ]

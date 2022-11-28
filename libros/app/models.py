@@ -20,12 +20,12 @@ class Usuario(models.Model):
     estado = models.BooleanField()
 
 class Libro(models.Model):
-	nombre = models.CharField(max_length=200)
-	precio = models.FloatField()
-	def __str__(self) -> str:
-         return f'{self.nombre} -> {self.precio}'
     
-	
+        imagen = models.URLField()
+        nombre = models.CharField(max_length=200)
+        precio = models.FloatField()
 
-
+        def __str__(self) -> str:
+            return f'{self.nombre} -> {self.precio}'
+    
 	

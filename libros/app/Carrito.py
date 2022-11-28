@@ -1,4 +1,6 @@
 class Carrito:
+
+    
     def __init__(self, request):
         self.request = request
         self.session = request.session
@@ -13,14 +15,16 @@ class Carrito:
         id = str(libro.id)
         if id not in self.carrito.keys():
             self.carrito[id]={
-                "producto_id": libro.id,
+                "libro_id": libro.id,
                 "nombre": libro.nombre,
                 "acumulado": libro.precio,
                 "cantidad": 1,
+                "valor_libro" : libro.precio
             }
         else:
             self.carrito[id]["cantidad"] += 1
             self.carrito[id]["acumulado"] += libro.precio
+            self.carrito[id]["valor_libro"] = libro.precio
         self.guardar_carrito()
 
     def guardar_carrito(self):
@@ -44,3 +48,7 @@ class Carrito:
     def limpiar(self):
         self.session["carrito"] = {}
         self.session.modified = True
+    
+    def cantidad(self):
+        cantidad = self.carrito[id]["cantidad"]
+        valor_libro = self.carrito[id]["valor_libro"]
