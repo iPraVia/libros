@@ -1,5 +1,6 @@
 from django.shortcuts import redirect, render
-from app import Carrito
+from app.Carrito import Carrito
+
 from app.models import Libro
 from django.shortcuts import render
 from django.db.models import Q
@@ -63,7 +64,17 @@ def catalogo(request):
 
 def agregarLibro(request, libro_id):
     carrito = Carrito(request)
-    producto = Libro.objects.get(id=libro_id)
-    carrito.agregar(producto)
-    return redirect("catalogoss")
+    libro = Libro.objects.get(id=libro_id)
+    carrito.agregar(libro)
+    return redirect("catalogo")
 
+def limpiarCarrito(request):
+    carrito = Carrito(request)
+    carrito.limpiar()
+    return redirect("catalogo")
+
+def restarLibro(request, producto_id):
+    carrito = Carrito(request)
+    producto = Libro.objects.get(id=producto_id)
+    carrito.restar(producto)
+    return redirect("catalogo")
