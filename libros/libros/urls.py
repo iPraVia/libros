@@ -19,8 +19,7 @@ from app import views as v
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('index/',v.index,name='index'),
-    path('inicio/',v.inicio,name='inicio'),
+    path('',v.login,name='login'),
     path('registro/',v.registro,name='registro'),
     path('',v.catalogo,name='catalogo'),
     path('agregar/<int:libro_id>/', v.agregarLibro, name="agregarLibro"),

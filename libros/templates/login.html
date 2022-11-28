@@ -1,6 +1,6 @@
 {% include 'header.html' %}
-{% load static %}
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,15 +10,16 @@
 </head>
 <body>
   <div class="alert alert-info display-1 text-center">
-    Inicio 
+    Iniciar Sesión 
   </div>
 
   <div style="display: flex; justify-content: center;">
-    
-    <a href="{% url 'catalogo' %}" class="btn btn-info">Avanzar sin iniciar sesión</a>
-    <a href="{% url 'index' %}" class="btn btn-success">Iniciar Sesión</a>
-    <a href="{% url 'registro' %}" class="btn btn-success">Registrarse</a>
-
+    <form method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" class="btn btn-success" value="Iniciar sesión">
+      <p>¿No tienes una cuenta?<a href="{% url 'registro' %}">Puedes registrarte aquí.</a></p>
+    </form>    
   </div>
     
 </body>
