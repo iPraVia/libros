@@ -27,7 +27,7 @@
               </li>
               <li class="nav-item dropdown" >
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="true">
-                  {{user.first_name}}
+                  {{user.is_authenticated}}
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><a class="dropdown-item" href="#">Action</a></li>
@@ -49,14 +49,14 @@
             <h3 style="margin-top:50px ;">Libros disponibles</h3>
         </div>
         <div class="row">
-            <div class="col-8">
+            <div class="col-12">
                 <div class="row" style="padding: 10px 0;">
                     <div class="col-12">
                         <div class="row">
 
                             {% for libro in libros %}
-                            <div class="col-4">
-                                <div class="card" style="height: 23rem; width: 13rem; margin: 5px 0px;">
+                            <div class="col-3">
+                                <div class="card" style="height: 30rem; width: 15rem; margin: 5px 0px;">
                                     <div class="card-body">
                                         <img class="thumbnail" src="{{libro.imagen}}" style="width: 200px;">
                                         <h5 class="card-title">{{libro.nombre}}</h5>

@@ -57,17 +57,22 @@
           </thead>
           <tbody>
           {% if request.session.carrito.items %}
-          {% for key, value in request.session.carrito.items %}
-            <tr>
-              <td>{{value.nombre}}</td>
-              <td>{{value.cantidad}}</td>
-              <td>{{value.valor_libro}}</td>
-              <td>{{value.acumulado}}
-                <a href="{% url 'agregarLibro' value.libro_id %}" class="badge btn btn-dark badge-dark">+</a>
-                <a href="{% url 'restar' value.libro_id %}" class="badge btn btn-dark badge-dark">-</a>
-              </td>
-            </tr>
-          {% endfor %}
+            {% for key, value in request.session.carrito.items %}
+              <tr>
+                <td>{{value.nombre}}</td>
+                <td>{{value.cantidad}}</td>
+                <td>{{value.valor_libro}}</td>
+                <td>{{value.acumulado}}
+                  <a href="{% url 'agregarLibro' value.libro_id %}" class="badge btn btn-dark badge-dark">+</a>
+                  <a href="{% url 'restar' value.libro_id %}" class="badge btn btn-dark badge-dark">-</a>
+                </td>
+              </tr>
+              {% endfor %}
+              <tr>
+                <th scope="row">Total:</th>
+                <td colspan="2">$ 
+                </td>
+              </tr>
           {% else %}
           <tr>
               <td colspan="3">
@@ -75,17 +80,17 @@
               </td>
           </tr>
           {% endif %}
-            <tr>
-              <th scope="row">Total:</th>
-              <td colspan="2">$ {{total_carrito}}</td>
-            </tr>
-          </tbody>
+        </tbody>
         </table>
         <hr>
         </div>
         <div class="row text-center">
             <div class="col-6"><a href="{% url 'CLS' %}" class="btn btn-dark">Limpiar</a></div>
-            <div class="col-6"><a href="#" class="btn btn-primary">Guardar</a></div>
+            {% if user.is_authenticated %}
+              <div class="col-6"><a href="#" class="btn btn-primary">Comprar</a></div>
+            {% else %}
+              <div class="col-6"><a href="#" class="btn btn-primary">Solo usuarios logiados pueden comprar</a></div>
+            {% endif%}
         </div>
     
 </body>
