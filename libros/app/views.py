@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from django.db.models import Q
 from app import models
 from app import formularios
+from app import sumaTotal
 
 from django.contrib import auth
 
