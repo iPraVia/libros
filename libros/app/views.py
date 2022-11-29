@@ -3,26 +3,32 @@ from app.Carrito import Carrito
 
 from app.models import Libro
 from django.shortcuts import render
+from django.contrib.auth.models import User
 from django.db.models import Q
 from app import models
 from app import formularios
 
-# Create your views here.
+from django.contrib import auth
+
 def login(request):
     form = formularios.IniciarSesion()
     if request.method == 'POST':
         form = formularios.IniciarSesion(request.POST)
-        email = form['email'].value()
+        username = form['email'].value()
         password = form['password'].value()
-        if models.Usuario.objects.filter(Q(email = email) & Q(password = password)).__len__() == 1 :
-            usuario = models.Usuario.objects.get(Q(email = email) & Q(password = password))
-            print("Nombre\n---> ",usuario.nombre)
-            datos = {'usuario':usuario}
-            
-            return redirect("catalogo")
-
+        user = auth.authenticate(username=username, password=password)
+        print(user)
+        if user is not None and user.is_active:
+            print(username)
+            auth.login(request, user)
+            # Redirect to a success page.
+            return redirect('catalogo')
+        else:
+            print("no entro")
+            return redirect('login')
     datos = {'form':form}
     return render(request,'login.html',datos)
+
 
 def crearUsuario(formulario):
     usuario = models.Usuario()
@@ -34,6 +40,9 @@ def crearUsuario(formulario):
     usuario.password = formulario.cleaned_data['password']
     usuario.terminos = formulario.cleaned_data['terminos']
     usuario.estado = True
+
+    user = User.objects.create_user(username=usuario.email,email=usuario.email,password=usuario.password,first_name=usuario.nombre,last_name=usuario.apellido,is_staff=False,is_active=True,is_superuser=False)
+    user.save()
     usuario.save()
 
 def registro(request):
