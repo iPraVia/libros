@@ -1,0 +1,34 @@
+{% include 'header.html' %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/editarPerfil.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    {% include 'nav.html' %}
+
+    <h5 class="titulo">Actualizar Datos Personales</h5>
+    <div class="contenedor">
+        <form method="POST">
+            <div>
+                <label class="form-label">Nombre</label>
+                <input type="text" class="form-control" name="nombre" placeholder="{{user.first_name | upper}}">
+            </div>
+            <div>
+                <label class="form-label">Apellido</label>
+                <input type="text" class="form-control" name="apellido" placeholder="{{user.last_name | upper}}">
+            </div>
+            <div>
+                <label class="form-label">Constraseña</label>
+                <input type="text" class="form-control" name="password">
+            </div>
+            <input type="submit" class="btn btn-success" value="Actualizar datos">
+        </form>
+    </div>
+</body>
+</html>

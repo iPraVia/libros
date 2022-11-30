@@ -27,6 +27,7 @@ urlpatterns = [
     path('limpiar/', v.limpiarCarrito, name="CLS"),
     path('restar/<int:libro_id>/', v.restarLibro, name="restar"),
     path('carrito/',v.carrito,name='carrito'),
-    
-    path('logout/',logout_then_login,name='logout')    
+    path('publicarLibro/',v.publicarLibro,name='publicarLibro'),
+    path('logout/',logout_then_login,name='logout'),
+    path('editarPerfil',v.editarPerfil,name='editarPerfil')
 ]

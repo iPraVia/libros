@@ -45,7 +45,8 @@ class Carrito:
         if id in self.carrito.keys():
             self.carrito[id]["cantidad"] -= 1
             self.carrito[id]["acumulado"] -= libro.precio
-            if self.carrito[id]["cantidad"] <= 0: self.eliminar(libro)
+            if self.carrito[id]["cantidad"] <= 0:
+                self.eliminar(libro)
             self.guardar_carrito()
 
     def limpiar(self):

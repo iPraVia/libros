@@ -6,79 +6,65 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'estilos/registro.css' %}">
+    <link rel="stylesheet" href="{% static 'css/registro.css' %}">
     <title>Document</title>
 </head>
-<body class="container" style="display: flex; flex-direction: column;">
-  <div class="alert alert-info display-1 text-center">
-      <h1>Regístrate</h1>
-      <h6>Ingresa tus datos personales y disfruta de una experiencia de compra más rápida.</h6>
+<body>
+
+  <div class="asideLeft">
+    <h1>Registrate</h1>
+    <div class="formRegistro">
+      {% include 'formRegistro.html' %}
+    </div>
   </div>
 
-  <div style="display: flex; justify-content: center;"> 
-    <div class="container mt-3">
-        <div class="row d-flex justify-content-start">
-            <div class="col-md-7">
-                <div class="card">
-                    <div class="card-body">
-                        <form method = "post">
-                            {% csrf_token %}
-                            {{ form.as_p }}
-                            <input type="submit" class="btn btn-primary" value="Registrarme">
-                            <p>¿Ya tienes una cuenta?<a href="{% url 'login' %}"> Inicia sesión.</a></p>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="asideRight">
-      <div class="divSuperior">
-        <h5>Beneficios libros.com</h5>
 
-        <div style="display: flex; margin-top: 33px; justify-content: flex-start;">
-          <img src="/static/logos_SVG/notifications_active_black_24dp.svg" alt="logo" style="margin-right: 13px;">
-          <p>Recibir notificaciones en tiempo real de tus pedidos.</p>
-        </div>
+  <div class="asideRight">
+    <div class="divSuperior">
+      <h5>Beneficios libros.com</h5>
 
-        <div style="display: flex; justify-content: start;">
-          <img src="/static/logos_SVG/description_black_24dp.svg" alt="logo" style="margin-right: 13px;">
-          <p>Revisar tus boletas online.</p>
-        </div>
-
-        <div style="display: flex; justify-content: flex-start;">
-          <img src="/static/logos_SVG/star_black_24dp.svg" alt="logo" style="margin-right: 13px;">
-          <p>Guardar medios de pago y direcciones favoritas.</p>
-        </div>
-
-        <div style="display: flex; justify-content: flex-start;">
-          <img src="/static/logos_SVG/business_black_24dp.svg" alt="logo" style="margin-right: 13px;">
-          <p>Ser parte de PuntoBooks, el mejor programa de beneficios.</p>
-        </div>
-
+      <div>
+        <img src="/static/logos_SVG/notifications_active_black_24dp.svg" alt="logo" style="margin-right: 13px;">
+        <p>Recibir notificaciones en tiempo real de tus pedidos.</p>
       </div>
 
-      <div style="display: flex; flex-direction: column; justify-content: center;border-bottom: 3.3px solid red; margin-top:33px;padding-bottom: 33px;">
-        <h5 style="display: flex; justify-content:flex-start;">Beneficios PuntoBooks</h5>
-
-        <div style="display: flex; margin-top: 33px; justify-content: flex-start;">
-          <img src="/static/logos_SVG/local_shipping_black_24dp.svg" alt="logo" style="margin-right: 13px;">
-          <p>Envíos gratis en compras desde $29.990.</p>
-        </div>
-
-        <div style="display: flex; justify-content: start;">
-          <img src="/static/logos_SVG/card_giftcard_black_24dp.svg" alt="logo" style="margin-right: 13px;">
-          <p>Canje de productos, experiencias, viajes y Gift Cards.</p>
-        </div>
-
-        <div style="display: flex; justify-content: flex-start;">
-          <img src="/static/logos_SVG/rocket_launch_black_24dp.svg" alt="logo" style="margin-right: 13px;">
-          <p>Promociones especiales, cupones de descuento y más.</p>
-        </div>
-
+      <div>
+        <img src="/static/logos_SVG/description_black_24dp.svg" alt="logo" style="margin-right: 13px;">
+        <p>Revisar tus boletas online.</p>
       </div>
-        
+
+      <div>
+        <img src="/static/logos_SVG/star_black_24dp.svg" alt="logo" style="margin-right: 13px;">
+        <p>Guardar medios de pago y direcciones favoritas.</p>
+      </div>
+
+      <div>
+        <img src="/static/logos_SVG/business_black_24dp.svg" alt="logo" style="margin-right: 13px;">
+        <p>Ser parte de PuntoBooks, el mejor programa de beneficios.</p>
+      </div>
+
     </div>
-  </div>    
+
+    <div class="divInferior">
+      <h5>Beneficios PuntoBooks</h5>
+
+      <div>
+        <img src="/static/logos_SVG/local_shipping_black_24dp.svg" alt="logo" style="margin-right: 13px;">
+        <p>Envíos gratis en compras desde $29.990.</p>
+      </div>
+
+      <div>
+        <img src="/static/logos_SVG/card_giftcard_black_24dp.svg" alt="logo" style="margin-right: 13px;">
+        <p>Canje de productos, experiencias, viajes y Gift Cards.</p>
+      </div>
+
+      <div>
+        <img src="/static/logos_SVG/rocket_launch_black_24dp.svg" alt="logo" style="margin-right: 13px;">
+        <p>Promociones especiales, cupones de descuento y más.</p>
+      </div>
+
+    </div>
+      
+  </div>   
 </body>
 </html>

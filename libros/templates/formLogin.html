@@ -1,0 +1,11 @@
+{% load static %}
+<div class="login">
+    <form method="POST">
+      <p class="invitado"><a class="sinvitado" href="{% url 'catalogo' %}">Iniciar sesión como invitado.</a></p>
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" class="btn btn-success" value="Iniciar sesión">
+      <p>¿No tienes una cuenta?<a href="{% url 'registro' %}">Puedes registrarte aquí.</a></p>
+    </form>    
+</div>
+  

@@ -2,6 +2,7 @@ from django.shortcuts import redirect, render
 from app.Carrito import Carrito
 
 from app.models import Libro
+from app.models import Genero
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.db.models import Q
@@ -12,6 +13,7 @@ from app import sumaTotal
 from django.contrib import auth
 
 def login(request):
+    libros = Libro.objects.all()
     form = formularios.IniciarSesion()
     if request.method == 'POST':
         form = formularios.IniciarSesion(request.POST)
@@ -27,7 +29,7 @@ def login(request):
         else:
             print("no entro")
             return redirect('login')
-    datos = {'form':form}
+    datos = {'form':form,'libros':libros}
     return render(request,'login.html',datos)
 
 
@@ -87,3 +89,28 @@ def restarLibro(request, libro_id):
 def carrito(request):
     return render(request, 'carrito.html')
 
+def publicarLibro(request):
+    generos = Genero.objects.all()
+    if request.method == 'POST':
+        imagen = request.POST['urlImagen']
+        titulo = request.POST['titulo']
+        precio = request.POST['precio']
+        comentario = request.POST['comentario']
+        genero = request.POST['inputGenero']
+        gen = Genero.objects.get(id=genero)
+        usuario = User.objects.get(username=request.user.username)
+
+        libro = Libro()
+        libro.imagen = imagen
+        libro.nombre = titulo
+        libro.precio = precio
+        libro.descripcion = comentario
+        libro.usuario = usuario
+        libro.genero = gen
+
+        libro.save()
+        return redirect("catalogo")
+    return render(request,'publicarLibro.html',{'genero':generos})
+
+def editarPerfil(request):
+    return render(request,'editarPerfil.html')
