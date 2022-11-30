@@ -113,4 +113,13 @@ def publicarLibro(request):
     return render(request,'publicarLibro.html',{'genero':generos})
 
 def editarPerfil(request):
+    if request.method == 'POST':
+        nombre = request.POST['nombre']
+        apellido = request.POST['apellido']
+        password = request.POST['password']
+        user = User.objects.get(username=request.user.username,password=request.user.password )
+        user.first_name = nombre
+        user.last_name = apellido
+        user.save()
+        return redirect('catalogo')
     return render(request,'editarPerfil.html')

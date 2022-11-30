@@ -15,6 +15,7 @@
     <h5 class="titulo">Actualizar Datos Personales</h5>
     <div class="contenedor">
         <form method="POST">
+            {% csrf_token %}
             <div>
                 <label class="form-label">Nombre</label>
                 <input type="text" class="form-control" name="nombre" placeholder="{{user.first_name | upper}}">
@@ -24,8 +25,8 @@
                 <input type="text" class="form-control" name="apellido" placeholder="{{user.last_name | upper}}">
             </div>
             <div>
-                <label class="form-label">Constraseña</label>
-                <input type="text" class="form-control" name="password">
+                <label class="form-label">Contraseña</label>
+                <input type="password" class="form-control" name="password">
             </div>
             <input type="submit" class="btn btn-success" value="Actualizar datos">
         </form>
